@@ -1,6 +1,6 @@
 #!/bin/sh
 
-debdir=/mnt/sda/debian_armhf
+debdir=/mnt/sda1/debian_armel
 
 /bin/busybox chroot $debdir /flossware/shutdown.sh
 
