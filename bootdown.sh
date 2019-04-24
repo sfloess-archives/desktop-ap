@@ -2,7 +2,7 @@
 
 debdir=/mnt/sda1/debian_armel
 
-/bin/busybox chroot $debdir /flossware/shutdown.sh
+/bin/busybox chroot $debdir /opt/flossware/shutdown.sh
 
 #umount $debdir/etc/ssh
 

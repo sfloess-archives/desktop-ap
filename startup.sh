@@ -9,9 +9,6 @@ chmod 775 /run/screen
 chmod u+s /usr/bin/sudo
 chmod g+s /usr/bin/sudo
 
-#ntpdate pool.ntp.org
-#ntpdate admin-ap
-
 /usr/sbin/ntpdate-debian
 
 chmod 700 -R /etc/ssh /var/run/sshd
@@ -27,9 +24,11 @@ chmod 700 -R /etc/ssh /var/run/sshd
 
 mkdir -p /mnt/admin-ap
 
-afuse -s -o nonempty -o allow_other -o mount_template="sshfs -s admin-ap:/%r %m" -o unmount_template="fusermount -u -z %m" /mnt/admin-ap
-afuse -s -o nonempty -o allow_other -o mount_template="sshfs -s %r@admin-ap:/home/%r %m" -o unmount_template="fusermount -u -z %m" /home
+#afuse -s -o nonempty -o allow_root -o allow_other -o mount_template="sshfs -s admin-ap:/%r %m" -o unmount_template="fusermount -u -z %m" /mnt/admin-ap
+#afuse -s -o nonempty -o allow_root -o allow_other -o mount_template="sshfs -s %r@admin-ap:/home/%r %m" -o unmount_template="fusermount -u -z %m" /home
+
+sshfs -s -o allow_other,default_permissions,nonempty,reconnect sfloess@admin-ap:/home/sfloess /mnt/admin-ap/home/sfloess
+sshfs -s -o allow_other,default_permissions,nonempty,reconnect root@admin-ap:/root            /mnt/admin-ap/root
 
 mount -a
-
 
