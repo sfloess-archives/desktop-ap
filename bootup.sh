@@ -15,6 +15,11 @@ rm -rf $debdir/run/screen/*
 
 # ----------------------------------------------------------------------
 
+rm -rf $debdir/lib/modules/*                                        
+cp -rf /lib/modules/`uname -r` $debdir/lib/modules/  
+                                                                        
+# ----------------------------------------------------------------------
+
 mount -t devpts none                  $debdir/dev/pts
 
 mount -o bind /                       $debdir/mnt/desktop-ap
@@ -22,8 +27,6 @@ mount -o bind /dev                    $debdir/dev
 mount -o bind /proc                   $debdir/proc
 mount -o bind /sys                    $debdir/sys
 mount -o bind /tmp                    $debdir/tmp
-
-mount -o bind /lib/modules/`uname -r` $debdir/lib/modules/`uname -r`
 
 # ----------------------------------------------------------------------
 
