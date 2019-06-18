@@ -20,6 +20,10 @@ cp -rf /lib/modules/`uname -r` $debdir/lib/modules/
                                                                         
 # ----------------------------------------------------------------------
 
+mkdir -p $debdir/mnt/admin-ap/root
+
+# ----------------------------------------------------------------------
+
 mount -t devpts none                  $debdir/dev/pts
 
 mount -o bind /                       $debdir/mnt/desktop-ap
@@ -27,6 +31,8 @@ mount -o bind /dev                    $debdir/dev
 mount -o bind /proc                   $debdir/proc
 mount -o bind /sys                    $debdir/sys
 mount -o bind /tmp                    $debdir/tmp
+
+mount -o bind /tmp/mnt/smbshare       $debdir/mnt/admin-ap/root
 
 # ----------------------------------------------------------------------
 
